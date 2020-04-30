@@ -25,6 +25,7 @@
         </a>
       </div>
     </div>
+     <b-Button>Test</b-Button>
   </div>
 </template>
 
