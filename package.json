@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "buefy": "^0.8.17",
+    "localforage": "^1.7.3",
     "nuxt": "^2.0.0",
     "reset-css": "^5.0.1",
     "vuex-persist": "^2.2.0"

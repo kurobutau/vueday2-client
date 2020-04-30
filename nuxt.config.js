@@ -29,6 +29,7 @@ export default {
   */
   plugins: [
     '~/plugins/buefy.js',
+    '~/plugins/vuex-persist.js'
   ],
   /*
   ** Nuxt.js dev-modules
