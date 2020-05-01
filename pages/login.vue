@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapState, mapMutations, mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -41,30 +41,24 @@ export default {
   computed: {
     ...mapState({
       userList: state => state.installment.users
+    }),
+    ...mapGetters({
+      authen: "installment/getUserLogin",
+      findbyid: "installment/getUserById"
     })
   },
   methods: {
     ...mapMutations({
-      newUser: "addUser"
+      newUser: "installment/addUser"
     }),
 
     onLogin() {
-      const findUser = this.userList.find(u => {
-        return u.username === this.username && u.password === this.password;
-      });
+      const findUser = this.authen(this.username, this.password);
 
       if (findUser.length == 0) {
         alert("username or password is incorrect");
       } else {
-        alert(findUser.type);
-        this.newUser({
-          
-            userId: 2,
-            username: "admin1",
-            password: "admin1",
-            type: "admin"
-          
-        },);
+        this.$router.push(`list/${findUser.userId}`);
       }
     }
   }

@@ -28,6 +28,22 @@ export const state = () => ({
   }]
 })
 
+export const getters ={
+
+  getUserLogin : (state)=> (username,password)=> {
+    return state.users.find((u)=>u.username===username && u.password===password)
+  },
+  getUserById : (state)=> (id)=>{
+    return state.users.find((u)=>u.userId===id)
+  },
+  getAccount : (state)=> (userid)=>{
+    return state.account.find((u)=>u.userId===userid)
+  },
+  getPayments :(state)=>(accountid)=>{
+    return state.account.find((u)=>u.userId===userid)
+  }
+}
+
 export const mutations = {
     addUser(state,newUser){
         state.users = [...state.users,newUser]
