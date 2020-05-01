@@ -40,7 +40,7 @@ export const getters ={
     return state.account.find((u)=>u.userId===userid)
   },
   getPayments :(state)=>(accountid)=>{
-    return state.account.find((u)=>u.userId===userid)
+    return state.payment.find((u)=>u.accountId===accountid)
   }
 }
 
