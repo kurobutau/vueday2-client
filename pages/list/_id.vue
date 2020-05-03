@@ -10,14 +10,23 @@
             <h1 class="title">
               ACCOUNT
             </h1>
-            <h2 class="subtitle">
-              Not found account
-              <b-button>Open Account</b-button>
-            </h2>
+            <div v-if="this.account.length==0">
+              <h2 class="subtitle">
+                <span class="">Not found account</span><br />
+                <b-button>Open Account</b-button>
+              </h2>
+            </div>
+            <div v-else>
+              <h2 class="subtitle">
+                <span class="">Account Name : {{this.currentUser.username}}</span><br />
+                <span class="">Loan Credit: {{this.account.loadAmount}}</span><br />
+                <span class="">Loan Balance : {{this.account.loadBalance}}</span><br />
+              </h2>
+            </div>
           </div>
         </div>
       </section>
-      <br>
+      <br />
       <section class="hero is-light">
         <div class="hero-body">
           <div class="container">
@@ -38,27 +47,35 @@
 import { mapState, mapMutations, mapGetters } from "vuex";
 export default {
   data() {
-    return {};
+    return {
+      account: {},
+      payments: [],
+      currentUser: {}
+    };
   },
   computed: {
     ...mapState({
-      userList: state => state.installment.users
+      userList: state => state.installment.users,
+      accountList: state => state.installment.accounts,
     }),
     ...mapGetters({
-        findUser: "installment/getUserById",
-        getAccount: "installment/getAccount",
-        getPayments: "installment/getPayments"
+      findUser: "installment/getUserById",
+      getAccount: "installment/getAccount",
+      getPayments: "installment/getPayments"
     })
   },
-  mounted (){
-      const userid=this.$route.params.id
-      console.log(userid)
-      console.log(this.findUser(1))
-      console.log(this.getAccount(0))
-      console.log(this.getPayments(0))
-      //alert(this.route.params.id)
-      //var currentUser = this.findUser()
-
+  mounted() {
+    
+  },
+  created (){
+    let uid = this.$route.params.id
+    this.currentUser=this.findUser(uid)
+    console.log(this.currentUser)
+    
+    this.account=this.getAccount(this.currentUser.userId)
+    this.payments=this.getPayments(this.account.accountId)
+    
+    
   },
   methods: {}
 };

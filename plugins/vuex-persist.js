@@ -12,7 +12,7 @@ export default function (context) {
     });
 
     new VuexPersistence({
-        key:'my-web-ver2',
+        key:'my-key-1',
         storage: localforage,
         asyncStorage: true,
     }).plugin(context.store)
