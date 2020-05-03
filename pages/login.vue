@@ -2,9 +2,7 @@
   <div class="container">
     <div class="notification is-centered">
       <div class="is-12 has-text-centered">
-        <b-field
-          ><h1><strong>STAFF Login</strong></h1></b-field
-        >
+        <b-field><h1><strong>STAFF Login</strong></h1></b-field>
       </div>
       <div class="columns">
         <div class="column is-5 has-text-right">Username</div>
@@ -54,8 +52,8 @@ export default {
 
     onLogin() {
       const findUser = this.authen(this.username, this.password);
-
-      if (findUser.length == 0) {
+     
+      if (findUser==null) {
         alert("username or password is incorrect");
       } else {
         this.$router.push(`list/${findUser.userId}`);
