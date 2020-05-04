@@ -57,7 +57,7 @@ export default {
         loadBalance: 300000,
         isClose: false
       }
-      this.newAccount({...account,})
+      this.newAccount({...account})
       console.log("finished init account")
       console.log(this.accountList)
     }
@@ -81,8 +81,7 @@ export default {
       console.log("finished init payment")
       console.log(this.paymentList)
     }
-    this.newPayment()
-    //this.$router.push('login')
+    this.$router.replace('/login')
   }
 };
 </script>

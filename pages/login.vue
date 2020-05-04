@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import { mapState, mapMutations, mapGetters } from "vuex";
 export default {
   data() {
@@ -51,12 +52,15 @@ export default {
     }),
 
     onLogin() {
+
+      
+
       const findUser = this.authen(this.username, this.password);
      
       if (findUser==null) {
         alert("username or password is incorrect");
       } else {
-        this.$router.push(`list/${findUser.userId}`);
+        this.$router.replace(`list/${findUser.userId}`);
       }
     }
   }
